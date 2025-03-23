@@ -1,16 +1,16 @@
-/*
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 
 struct List {
 	int info;
+	struct List* past;
 	struct List* next;
 };
 
 void free_list(struct List* First)
 {
-	struct List* Current,* Past;
+	struct List* Current, * Past;
 
 	//singl el list
 	if (First->next == First)
@@ -35,12 +35,12 @@ void free_list(struct List* First)
 
 void re_print(struct List* First, int info)
 {
-	struct List* Current,* Stop = NULL;
+	struct List* Current, * Stop = NULL;
 
 	//single el list
 	if (First->next == First)
 	{
-		printf("%d", First->info);
+		printf("%d\n%d", First->info, First->info);
 		return;
 	}
 
@@ -53,18 +53,23 @@ void re_print(struct List* First, int info)
 			break;
 		}
 	}
+	//list with last stop el
 	if (Current->info == info) Stop = Current;
 
-	//list with last stop el
+	//print list
 	if (Stop)
 	{
 		for (Current = Stop; Current->next != Stop; Current = Current->next) printf("%d ", Current->info);
+		printf("%d\n", Current->info);
+		for (Current = Stop; Current->past != Stop; Current = Current->past) printf("%d ", Current->info);
 		printf("%d", Current->info);
 		return;
 	}
 
 	//list without stop el
 	for (Current = First; Current->next != First; Current = Current->next) printf("%d ", Current->info);
+	printf("%d\n", Current->info);
+	for (Current = First->past; Current != First; Current = Current->past) printf("%d ", Current->info);
 	printf("%d", Current->info);
 	return;
 }
@@ -96,6 +101,7 @@ int main()
 			free_list(First);
 			return 0;
 		}
+		(Current->next)->past = Current;
 		Current = Current->next;
 		Current->info = info;
 	}
@@ -107,6 +113,7 @@ int main()
 		return 0;
 	}
 
+	First->past = Current;
 	Current->next = First;
 	scanf("%c", &dot);
 	//no end el
@@ -126,11 +133,14 @@ int main()
 	//print original list
 	for (Current = First; Current->next != First; Current = Current->next) printf("%d ", Current->info);
 	printf("%d\n", Current->info);
-	
+
+	//print reversed original list
+	for (Current = First->past; Current != First; Current = Current->past) printf("%d ", Current->info);
+	printf("%d\n\n", Current->info);
+
 	//print list
 	re_print(First, info);
 	free_list(First);
 
 	return 0;
 }
-*/
