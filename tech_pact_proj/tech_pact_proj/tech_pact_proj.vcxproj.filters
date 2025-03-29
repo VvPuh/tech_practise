@@ -39,5 +39,17 @@
     <ClCompile Include="task8.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="task9.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="task10.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="task11.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="task12.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

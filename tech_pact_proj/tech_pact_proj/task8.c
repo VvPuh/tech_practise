@@ -1,3 +1,4 @@
+/*
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
@@ -128,3 +129,4 @@ int main()
 	free_list(First);
 	return 0;
 }
+*/
